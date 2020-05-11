@@ -12,41 +12,39 @@ import { capitalize } from '../utils/format'
   5 - Abilities - abilities: [{ability:{name: string, url: string}, is_hidden: boolean, slot: int}]
   6 - Forms - forms: [{name: string, url: string}]
 */
-const Details = ({ url: pokemonUrl }) => {
-  const { data: detailsReq, error } = useSWR(pokemonUrl, fetcher)
+const Details = ({ url }) => {
+  const { data: detailsReq, error } = useSWR(url, fetcher)
   if (error) return <p>Falhou ao tentar acessar a API.</p>
   if (!detailsReq) return <p>Carregando detalhes do pokemon...</p>
 
   const { id, name, sprites, types, abilities, forms } = detailsReq.data
   return (
     <>
-      <li>
-        <p>#{id}</p>
-        <p>Name: {capitalize(name)}</p>
-        <p>
-          <img src={sprites.front_default} />
-        </p>
-        <p>
-          Types:{' '}
-          {types.map((t) => (
-            <span key={t.type.name}>{capitalize(t.type.name)} </span>
-          ))}
-        </p>
-        <p>
-          Abilities:{' '}
-          {abilities.map((a) => (
-            <span key={a.ability.name}>
-              {capitalize(a.ability.name)} {a.is_hidden ? `(hidden)` : ``}
-            </span>
-          ))}
-        </p>
-        <p>
-          Forms:{' '}
-          {forms.map((form) => (
-            <span key={form.name}>{capitalize(form.name)}</span>
-          ))}
-        </p>
-      </li>
+      <p>#{id}</p>
+      <p>Name: {capitalize(name)}</p>
+      <p>
+        <img src={sprites.front_default} />
+      </p>
+      <p>
+        Types:{' '}
+        {types.map((t) => (
+          <span key={t.type.name}>{capitalize(t.type.name)} </span>
+        ))}
+      </p>
+      <p>
+        Abilities:{' '}
+        {abilities.map((a) => (
+          <span key={a.ability.name}>
+            {capitalize(a.ability.name)} {a.is_hidden ? `(hidden)` : ``}
+          </span>
+        ))}
+      </p>
+      <p>
+        Forms:{' '}
+        {forms.map((form) => (
+          <span key={form.name}>{capitalize(form.name)}</span>
+        ))}
+      </p>
     </>
   )
 }

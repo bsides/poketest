@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 function fetcher(url) {
-  console.log('Fetching ' + url)
+  //console.log('Fetching ' + url)
   return axios.get(url)
 }
 

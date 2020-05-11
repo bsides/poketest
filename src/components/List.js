@@ -15,7 +15,9 @@ const List = ({ url, path }) => {
     <div>
       <ul>
         {pokemons.map((pokemon) => (
-          <Details url={pokemon.url} name={pokemon.name} key={pokemon.url} />
+          <li key={pokemon.url}>
+            <Details url={pokemon.url} name={pokemon.name} />
+          </li>
         ))}
       </ul>
     </div>
