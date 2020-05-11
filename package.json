@@ -8,13 +8,16 @@
     "prod": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.13",
+    "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
     "next": "9.3.6",
+    "normalize.css": "^8.0.1",
     "react": "16.13.1",
-    "react-data-table-component": "^6.9.1",
     "react-dom": "16.13.1",
     "styled-components": "^5.1.0",
-    "swr": "^0.2.0"
+    "swr": "^0.2.0",
+    "typeface-pt-sans-narrow": "0.0.71"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.7"

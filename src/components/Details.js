@@ -1,6 +1,7 @@
 import useSWR from 'swr'
 import fetcher from '../utils/fetcher'
 import { capitalize } from '../utils/format'
+import Type from './Type'
 
 /*
   Details to show in the index:
@@ -19,20 +20,18 @@ const Details = ({ url }) => {
 
   const { id, name, sprites, types, abilities, forms } = detailsReq.data
   return (
-    <>
-      <p>#{id}</p>
-      <p>Name: {capitalize(name)}</p>
+    <li>
       <p>
         <img src={sprites.front_default} />
       </p>
+      <p>{id}</p>
+      <p>{capitalize(name)}</p>
       <p>
-        Types:{' '}
         {types.map((t) => (
-          <span key={t.type.name}>{capitalize(t.type.name)} </span>
+          <Type key={t.type.name} name={t.type.name} />
         ))}
       </p>
       <p>
-        Abilities:{' '}
         {abilities.map((a) => (
           <span key={a.ability.name}>
             {capitalize(a.ability.name)} {a.is_hidden ? `(hidden)` : ``}
@@ -40,12 +39,11 @@ const Details = ({ url }) => {
         ))}
       </p>
       <p>
-        Forms:{' '}
         {forms.map((form) => (
           <span key={form.name}>{capitalize(form.name)}</span>
         ))}
       </p>
-    </>
+    </li>
   )
 }
 

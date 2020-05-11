@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-function fetcher(url) {
+async function fetcher(url) {
   //console.log('Fetching ' + url)
-  return axios.get(url)
+  return await axios.get(url)
 }
 
 export default fetcher
