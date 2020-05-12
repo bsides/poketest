@@ -28,12 +28,17 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     color: theme.palette.common.black,
+    [theme.breakpoints.down('xs')]: {
+      position: 'absolute',
+      top: '-9999px',
+      left: '-9999px',
+    },
   },
   offset: theme.mixins.toolbar,
   atBarColor: {
     color: theme.palette.common.white,
   },
-  appBarColor: {
+  appBar: {
     background: '#ffc',
   },
 }))
@@ -55,7 +60,7 @@ const Home = () => {
 
   return (
     <>
-      <AppBar position="fixed" className={classes.appBarColor}>
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             Pokétest

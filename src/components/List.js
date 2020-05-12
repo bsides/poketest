@@ -11,11 +11,43 @@ import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
+    overflowX: 'auto',
+    borderCollapse: 'collapse',
+    [theme.breakpoints.down('xs')]: {
+      display: 'block',
+      maxWidth: '100vw',
+      minWidth: 'auto',
+      '& tr, tbody, td, th, thead': {
+        display: 'block',
+        marginBottom: '1rem',
+      },
+      '& thead': {
+        position: 'absolute',
+        top: '-9999px',
+        left: '-9999px',
+      },
+      '& tr': {
+        borderBottom: '1px solid #ddd',
+      },
+      '& th, td': {
+        border: 'none',
+        textAlign: 'center',
+        padding: '6px',
+      },
+      '& td:first-of-type': {
+        display: 'inline-block',
+        width: '40vw',
+        textAlign: 'right',
+      },
+      '& td:nth-of-type(2)': {
+        display: 'inline-block',
+      },
+    },
   },
-})
+}))
 
 const List = ({ url, nextUrl, previousUrl }) => {
   const { data: pokemonsReq, error } = useSWR(url, fetcher)
