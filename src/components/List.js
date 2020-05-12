@@ -51,13 +51,9 @@ const List = ({ url, nextUrl, previousUrl }) => {
               <TableCell>Forms</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody stripedRows>
+          <TableBody>
             {pokemons.map((pokemon) => (
-              <Details
-                url={pokemon.url}
-                name={pokemon.name}
-                key={pokemon.url}
-              />
+              <Details url={pokemon.url} key={pokemon.url} />
             ))}
           </TableBody>
         </Table>

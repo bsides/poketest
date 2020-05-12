@@ -5,21 +5,28 @@
   "scripts": {
     "start": "next dev",
     "build": "next build",
-    "prod": "next start"
+    "prod": "next start",
+    "test": "jest --watch",
+    "test:ci": "jest --ci",
+    "test:cc": "jest --collect-coverage"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.13",
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
     "next": "9.3.6",
-    "normalize.css": "^8.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "^5.1.0",
-    "swr": "^0.2.0",
-    "typeface-pt-sans-narrow": "0.0.71"
+    "swr": "^0.2.0"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.10.7"
+    "@testing-library/jest-dom": "^5.7.0",
+    "@testing-library/react": "^10.0.4",
+    "babel-jest": "^26.0.1",
+    "babel-plugin-styled-components": "^1.10.7",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "react-test-renderer": "^16.13.1"
   }
 }

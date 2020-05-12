@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details.js renders the component as expected 1`] = `
+<tr
+  className="MuiTableRow-root"
+  role={null}
+>
+  <td
+    aria-sort={null}
+    className="MuiTableCell-root"
+  >
+    <p>
+      Carregando detalhes do pokemon...
+    </p>
+  </td>
+</tr>
+`;

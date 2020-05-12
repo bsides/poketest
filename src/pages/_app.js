@@ -1,12 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
-import { ThemeProvider } from 'styled-components'
-import GlobalStyle from '../utils/globalStyle'
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../utils/theme'
-import 'normalize.css'
-import 'typeface-pt-sans-narrow'
 
-function MyApp(props) {
+export default function MyApp(props) {
   const { Component, pageProps } = props
 
   React.useEffect(() => {
@@ -20,18 +18,16 @@ function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>Poketest</title>
+        <title>Pokétest</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
+        <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
     </React.Fragment>
   )
 }
-
-export default MyApp

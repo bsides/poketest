@@ -13,8 +13,6 @@ import ButtonGroup from '@material-ui/core/ButtonGroup'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -40,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const index = () => {
+const Home = () => {
   const [url, setUrl] = useState(process.env.API.url + process.env.API.path)
   const [perPage, setPerPage] = useState(20)
   const [nextUrl, setNextUrl] = useState('')
@@ -101,4 +99,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Home
