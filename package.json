@@ -1,6 +1,16 @@
 {
   "name": "poketest",
-  "version": "0.1.0",
+  "description": "Teste de frontend enviado pela Invillia usando API de Pokemon PokeAPI",
+  "author": {
+    "name": "Rafael 'BSIDES' Pereira",
+    "email": "eu@emaildorafa.com",
+    "url": "https://github.com/bsides"
+  },
+  "repository": {
+    "url": "https://github.com/bsides/poketest.git",
+    "type": "github"
+  },
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "next dev",
