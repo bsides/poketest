@@ -17,7 +17,7 @@ e `forms`. Inseri um pouco mais de dados além deles.
 
 ## Versão online
 
-Publiquei uma versão online no github pages: https://bsides.github.io/poketest
+Publicada versão de produção: https://poketest.bsides.now.sh/
 
 ## Considerações
 
