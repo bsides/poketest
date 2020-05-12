@@ -3,6 +3,10 @@ import fetcher from '../utils/fetcher'
 import { capitalize } from '../utils/format'
 import Type from './Type'
 
+import TableCell from '@material-ui/core/TableCell'
+import TableRow from '@material-ui/core/TableRow'
+import Typography from '@material-ui/core/Typography'
+
 /*
   Details to show in the index:
 
@@ -15,35 +19,50 @@ import Type from './Type'
 */
 const Details = ({ url }) => {
   const { data: detailsReq, error } = useSWR(url, fetcher)
-  if (error) return <p>Falhou ao tentar acessar a API.</p>
-  if (!detailsReq) return <p>Carregando detalhes do pokemon...</p>
+
+  if (error)
+    return (
+      <TableRow>
+        <TableCell>
+          <p>Falhou ao tentar acessar a API.</p>
+        </TableCell>
+      </TableRow>
+    )
+  if (!detailsReq)
+    return (
+      <TableRow>
+        <TableCell>
+          <p>Carregando detalhes do pokemon...</p>
+        </TableCell>
+      </TableRow>
+    )
 
   const { id, name, sprites, types, abilities, forms } = detailsReq.data
   return (
-    <li>
-      <p>
+    <TableRow key={id} hover={true}>
+      <TableCell component="th" scope="row">
         <img src={sprites.front_default} />
-      </p>
-      <p>{id}</p>
-      <p>{capitalize(name)}</p>
-      <p>
+      </TableCell>
+      <TableCell>{id}</TableCell>
+      <TableCell>{capitalize(name)}</TableCell>
+      <TableCell>
         {types.map((t) => (
           <Type key={t.type.name} name={t.type.name} />
         ))}
-      </p>
-      <p>
+      </TableCell>
+      <TableCell>
         {abilities.map((a) => (
-          <span key={a.ability.name}>
+          <Typography key={a.ability.name}>
             {capitalize(a.ability.name)} {a.is_hidden ? `(hidden)` : ``}
-          </span>
+          </Typography>
         ))}
-      </p>
-      <p>
+      </TableCell>
+      <TableCell>
         {forms.map((form) => (
-          <span key={form.name}>{capitalize(form.name)}</span>
+          <Typography key={form.name}>{capitalize(form.name)}</Typography>
         ))}
-      </p>
-    </li>
+      </TableCell>
+    </TableRow>
   )
 }
 
