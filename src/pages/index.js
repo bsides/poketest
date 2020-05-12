@@ -4,10 +4,39 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '../components/List'
 import Button from '@material-ui/core/Button'
+import Paper from '@material-ui/core/Paper'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
 
 const useStyles = makeStyles((theme) => ({
-  button: {
+  formControl: {
     margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+    color: theme.palette.common.black,
+  },
+  offset: theme.mixins.toolbar,
+  atBarColor: {
+    color: theme.palette.common.white,
+  },
+  appBarColor: {
+    background: '#ffc',
   },
 }))
 
@@ -27,32 +56,48 @@ const index = () => {
   }
 
   return (
-    <div>
-      <select onChange={handleResults}>
-        <option value="20">20 results per page</option>
-        <option value="35">35 results per page</option>
-        <option value="70">70 results per page</option>
-      </select>
-      <Button
-        className={classes.button}
-        variant="contained"
-        startIcon={<NavigateBeforeIcon />}
-        onClick={() => setUrl(previousUrl)}
-        disabled={!previousUrl}
-      >
-        Previous {previousUrl ? perPage : ''}
-      </Button>
-      <Button
-        className={classes.button}
-        variant="contained"
-        endIcon={<NavigateNextIcon />}
-        onClick={() => setUrl(nextUrl)}
-        disabled={!nextUrl}
-      >
-        Next {nextUrl ? perPage : ''}
-      </Button>
-      <List url={url} nextUrl={setNextUrl} previousUrl={setPreviousUrl} />
-    </div>
+    <>
+      <AppBar position="fixed" className={classes.appBarColor}>
+        <Toolbar>
+          <Typography variant="h6" className={classes.title}>
+            Pokétest
+          </Typography>
+          <FormControl className={classes.formControl}>
+            <InputLabel id="per-page-label">Pokémons</InputLabel>
+            <Select
+              labelId="per-page-label"
+              id="per-page-select"
+              value={perPage}
+              onChange={handleResults}
+            >
+              <MenuItem value={20}>20 per page</MenuItem>
+              <MenuItem value={35}>35 per page</MenuItem>
+              <MenuItem value={70}>70 per page</MenuItem>
+            </Select>
+          </FormControl>
+          <ButtonGroup variant="contained">
+            <Button
+              startIcon={<NavigateBeforeIcon />}
+              onClick={() => setUrl(previousUrl)}
+              disabled={!previousUrl}
+            >
+              Previous {previousUrl ? perPage : ''}
+            </Button>
+            <Button
+              endIcon={<NavigateNextIcon />}
+              onClick={() => setUrl(nextUrl)}
+              disabled={!nextUrl}
+            >
+              Next {nextUrl ? perPage : ''}
+            </Button>
+          </ButtonGroup>
+        </Toolbar>
+      </AppBar>
+      <div className={classes.offset} />
+      <Paper>
+        <List url={url} nextUrl={setNextUrl} previousUrl={setPreviousUrl} />
+      </Paper>
+    </>
   )
 }
 
